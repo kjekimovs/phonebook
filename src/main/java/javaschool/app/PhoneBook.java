@@ -55,8 +55,11 @@ public class PhoneBook implements ShellDependent {
         List<Record> result = new ArrayList<>();
         for (Record r : recordList) {
             String name = r.getName().toLowerCase();
+            if (name.contains(str))
 
         }
+
+        return result;
     }
 
     private Shell theShell;
