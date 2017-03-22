@@ -1,14 +1,15 @@
 package javaschool.app;
 
 import asg.cliche.Command;
+import asg.cliche.Shell;
+import asg.cliche.ShellDependent;
+import asg.cliche.ShellFactory;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * Created by JavaCourses on 15.03.2017..
- */
-public class PhoneBook {
+public class PhoneBook implements ShellDependent {
     private List<Record> recordList = new ArrayList<>();
 
     @Command
@@ -26,6 +27,18 @@ public class PhoneBook {
         return recordList;
     }
 
+
+    @Command
+    public void edit(int id) throws IOException {
+        for (Record r : recordList) {
+            if (r.getId() == id) {
+                ShellFactory.createSubshell("#" + id, theShell, "Edit record", r)
+                        .commandLoop();
+                break;
+            }
+        }
+    }
+
     @Command
     public void addPhone(int id, String phone) {
         for (Record r : recordList) {
@@ -34,5 +47,21 @@ public class PhoneBook {
                 break;
             }
         }
+    }
+
+    @Command
+    public List<Record> find(String str) {
+        str = str.toLowerCase();
+        List<Record> result = new ArrayList<>();
+        for (Record r : recordList) {
+            String name = r.getName().toLowerCase();
+
+        }
+    }
+
+    private Shell theShell;
+
+    public void cliSetShell(Shell theShell) {
+        this.theShell = theShell;
     }
 }
