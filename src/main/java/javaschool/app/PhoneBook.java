@@ -22,6 +22,14 @@ public class PhoneBook implements ShellDependent {
     }
 
     @Command
+    public void createNote(String name, String text) {
+        Note r = new Note();
+        r.setName(name);
+        r.setText(text);
+        recordList.add(r);
+    }
+
+    @Command
     public List<Record> list() {
         return recordList;
     }
@@ -63,14 +71,6 @@ public class PhoneBook implements ShellDependent {
             }
             if (name.contains(str) || email.contains(str)) {
                 result.add(r);
-            } else {
-                for (String p : r.getPhones()) {
-                    p = p.toLowerCase();
-                    if (p.contains(str)) {
-                        result.add(r);
-                        break;
-                    }
-                }
             }
         }
         return result;
