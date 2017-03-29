@@ -20,7 +20,7 @@ public class Person extends Record {
     }
 
     public List<String> getPhones() {
-        return phones
+        return phones;
     }
 
     @Command
