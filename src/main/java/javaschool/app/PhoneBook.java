@@ -29,8 +29,9 @@ public class PhoneBook implements ShellDependent {
     @Command
     public void addPhone(int id, String phone) {
         for (Record r : recordList) {
-            if (r.getId() == id) {
-                r.addPhones(phone);
+            if (r instanceof Person && r.getId() == id) {
+                Person p = (Person) r;
+                p.addPhones(phone);
                 break;
             }
         }
@@ -53,7 +54,13 @@ public class PhoneBook implements ShellDependent {
         List<Record> result = new ArrayList<>();
         for (Record r : recordList) {
             String name = r.getName().toLowerCase();
-            String email = r.getEmail().toLowerCase();
+            String email;
+            if (r instanceof Person) {
+                Person p = (Person) r;
+                email = p.getEmail().toLowerCase();
+            } else {
+                email = "";
+            }
             if (name.contains(str) || email.contains(str)) {
                 result.add(r);
             } else {
