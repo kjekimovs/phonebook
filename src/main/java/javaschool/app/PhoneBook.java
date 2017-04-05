@@ -22,11 +22,20 @@ public class PhoneBook implements ShellDependent {
     }
 
     @Command
-    public void createNote(String name, String text) {
-        Note r = new Note();
-        r.setName(name);
-        r.setText(text);
-        recordList.add(r);
+    public void createNote(String name, String txt) {
+        Note note = new Note();
+        note.setName(name);
+        note.setNote(txt);
+        recordList.add(note);
+    }
+
+    @Command
+    public void createReminder(String name, String txt, String time) {
+        Reminder rem = new Reminder();
+        rem.setName(name);
+        rem.setNote(txt);
+        rem.setTime(time);
+        recordList.add(rem);
     }
 
     @Command
