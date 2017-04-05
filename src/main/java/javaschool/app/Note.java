@@ -1,18 +1,18 @@
 package javaschool.app;
 
 public class Note extends Record {
-    private String text;
+    private String note;
 
-    public String getText() {
-        return text;
+    public String getNote() {
+        return note;
     }
 
     public void setText(String text) {
-        this.text = text;
+        this.note = text;
     }
 
     @Override
     public String toString() {
-        return getId() + " " + getName() + " " + text;
+        return getId() + " " + getName() + " " + note;
     }
 }

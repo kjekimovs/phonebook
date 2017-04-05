@@ -1,25 +1,18 @@
 package javaschool.app;
 
-import java.sql.Time;
-
-/**
- * Created by JavaCourses on 29.03.2017..
- */
 public class Reminder extends Note {
-    private Time time;
+    private String time;
 
-
-    public Time getTime() {
+    public String getTime() {
         return time;
     }
 
-    public void setTime(Time time) {
+    public void setTime(String time) {
         this.time = time;
     }
 
-    
     @Override
     public String toString() {
-        return getId() + " " + getName() + " " + time;
+        return super.toString() + " " + time;
     }
 }
